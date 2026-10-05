@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+  <title>Área do Paciente | Clínica Digital</title>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong>Clínica Digital</strong>
+      <span class="topbar-subtitle" id="topbarUsuario"></span>
+    </div>
+    <button class="secondary small" onclick="logout()">Sair</button>
+  </header>
+
+  <main class="dashboard">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Área do paciente</span>
+        <h1>Olá, <span id="saudacao"></span></h1>
+        <p>Consulte seus dados e encontre médicos por especialidade.</p>
+      </div>
+    </section>
+
+    <section class="grid-dashboard">
+      <section class="card">
+        <h2>Meus dados</h2>
+        <div id="perfil"></div>
+      </section>
+
+      <section class="card users-card">
+        <div class="section-title">
+          <div>
+            <h2>Médicos</h2>
+            <p class="muted">Filtre por especialidade.</p>
+          </div>
+        </div>
+
+        <input id="filtro" type="search" placeholder="Ex.: Cardiologia" oninput="agendarBusca()">
+        <div id="lista" class="user-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/common.js"></script>
+  <script src="/paciente.js"></script>
+</body>
+</html>

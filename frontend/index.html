@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+  <title>Entrar | Clínica Digital</title>
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-container">
+      <div class="brand">
+        <span class="brand-badge">CLÍNICA</span>
+        <h1>Clínica Digital</h1>
+        <p>Acesso para médicos e pacientes</p>
+      </div>
+
+      <div class="auth-grid">
+        <section class="card">
+          <h2>Entrar</h2>
+          <p class="muted">Use seu e-mail e senha para acessar o sistema.</p>
+
+          <form onsubmit="event.preventDefault(); login();">
+            <label for="emailLogin">E-mail</label>
+            <input id="emailLogin" type="email" placeholder="email@exemplo.com" required>
+
+            <label for="senhaLogin">Senha</label>
+            <input id="senhaLogin" type="password" placeholder="Sua senha" required>
+
+            <button class="primary" type="submit">Entrar</button>
+          </form>
+
+          <p id="statusLogin" class="message"></p>
+        </section>
+
+        <section class="card">
+          <h2>Criar conta</h2>
+          <p class="muted">Escolha o tipo de cadastro.</p>
+
+          <form id="formCadastro" onsubmit="event.preventDefault(); cadastrar();">
+            <label for="tipoCadastro">Sou</label>
+            <select id="tipoCadastro" onchange="trocarTipoCadastro()">
+              <option value="paciente">Paciente</option>
+              <option value="medico">Médico</option>
+            </select>
+
+            <label for="nomeCadastro">Nome completo</label>
+            <input id="nomeCadastro" placeholder="Seu nome" required>
+
+            <label for="emailCadastro">E-mail</label>
+            <input id="emailCadastro" type="email" placeholder="email@exemplo.com" required>
+
+            <label for="senhaCadastro">Senha</label>
+            <input id="senhaCadastro" type="password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+
+            <div id="camposPaciente">
+              <label for="cpfCadastro">CPF</label>
+              <input id="cpfCadastro" placeholder="000.000.000-00" inputmode="numeric">
+
+              <div class="row">
+                <div>
+                  <label for="nascimentoCadastro">Nascimento</label>
+                  <input id="nascimentoCadastro" type="date">
+                </div>
+                <div>
+                  <label for="telefoneCadastro">Telefone</label>
+                  <input id="telefoneCadastro" placeholder="(81) 99999-9999" inputmode="tel">
+                </div>
+              </div>
+            </div>
+
+            <div id="camposMedico" class="hidden">
+              <div class="row">
+                <div>
+                  <label for="crmCadastro">CRM</label>
+                  <input id="crmCadastro" placeholder="12345/PE">
+                </div>
+                <div>
+                  <label for="especialidadeCadastro">Especialidade</label>
+                  <input id="especialidadeCadastro" placeholder="Cardiologia">
+                </div>
+              </div>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+          </form>
+          <p id="statusCadastro" class="message"></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="/common.js"></script>
+  <script src="/auth.js"></script>
+</body>
+</html>

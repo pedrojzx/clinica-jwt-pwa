@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f766e">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.png">
+  <link rel="stylesheet" href="/style.css">
+  <title>Administração | Clínica Digital</title>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <strong>Clínica Digital</strong>
+      <span class="topbar-subtitle" id="topbarUsuario"></span>
+    </div>
+    <button class="secondary small" onclick="logout()">Sair</button>
+  </header>
+
+  <main class="dashboard">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Painel administrativo</span>
+        <h1>Gerenciamento de usuários</h1>
+        <p>Cadastre, consulte, edite e remova médicos e pacientes.</p>
+      </div>
+      <button class="primary action-button" onclick="listarUsuarios()">Atualizar lista</button>
+    </section>
+
+    <section class="grid-dashboard">
+      <section class="card">
+        <h2>Novo usuário</h2>
+
+        <form id="formNovo" onsubmit="event.preventDefault(); criarUsuario();">
+          <label for="roleNovo">Perfil</label>
+          <select id="roleNovo" onchange="trocarPerfilNovo()">
+            <option value="paciente">Paciente</option>
+            <option value="medico">Médico</option>
+            <option value="admin">Administrador</option>
+          </select>
+
+          <label for="nomeNovo">Nome</label>
+          <input id="nomeNovo" placeholder="Nome completo" required>
+
+          <label for="emailNovo">E-mail</label>
+          <input id="emailNovo" type="email" placeholder="email@exemplo.com" required>
+
+          <label for="senhaNovo">Senha</label>
+          <input id="senhaNovo" type="password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+
+          <div id="novoPaciente">
+            <label for="cpfNovo">CPF</label>
+            <input id="cpfNovo" placeholder="000.000.000-00" inputmode="numeric">
+
+            <label for="nascimentoNovo">Nascimento</label>
+            <input id="nascimentoNovo" type="date">
+
+            <label for="telefoneNovo">Telefone</label>
+            <input id="telefoneNovo" placeholder="(81) 99999-9999" inputmode="tel">
+          </div>
+
+          <div id="novoMedico" class="hidden">
+            <label for="crmNovo">CRM</label>
+            <input id="crmNovo" placeholder="12345/PE">
+
+            <label for="especialidadeNovo">Especialidade</label>
+            <input id="especialidadeNovo" placeholder="Cardiologia">
+          </div>
+
+          <button class="primary" type="submit">Criar usuário</button>
+        </form>
+        <p id="statusCrud" class="message"></p>
+      </section>
+
+      <section class="card users-card">
+        <div class="section-title">
+          <div>
+            <h2>Usuários cadastrados</h2>
+            <p class="muted">Dados carregados pela API protegida.</p>
+          </div>
+          <select id="filtroRole" class="filter" onchange="listarUsuarios()">
+            <option value="">Todos</option>
+            <option value="paciente">Pacientes</option>
+            <option value="medico">Médicos</option>
+            <option value="admin">Admins</option>
+          </select>
+        </div>
+
+        <div id="usuarios" class="user-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/common.js"></script>
+  <script src="/usuarios.js"></script>
+</body>
+</html>

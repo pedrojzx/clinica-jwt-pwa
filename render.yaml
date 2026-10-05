@@ -1,0 +1,20 @@
+# Blueprint do Render (opcional): New + > Blueprint > selecione o repositório
+services:
+  - type: web
+    name: clinica-jwt-pwa
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_NOME
+        value: Administrador
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_SENHA
+        sync: false
